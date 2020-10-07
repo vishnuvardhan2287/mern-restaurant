@@ -73,7 +73,8 @@ const SignUp = ()  => {
                 console.log('Axios signup Error:', err);
                 setData({
                     ...data,
-                    loading:false
+                    loading:false,
+                    errorMsg: err.response.data.errorMessage
                 })
             })
         }
