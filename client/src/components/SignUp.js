@@ -66,7 +66,7 @@ const SignUp = ()  => {
                     password:'',
                     password2:'',
                     loading:false,
-                    successMsg: response.data.successMsg
+                    successMsg: response.data.successMessage
                 })
             })
             .catch(err =>{
@@ -81,7 +81,7 @@ const SignUp = ()  => {
     }
 
     return (
-        <div className="img-container">
+        <div className="signup-container">
             <div className="row px-2 vh-100">
                 <div className="col-md-5 mx-auto align-self-center">
                     {successMsg && showSuccessMsg(successMsg)} 
@@ -135,9 +135,7 @@ const SignUp = ()  => {
                </form>
                 </div>
             </div>
-            {JSON.stringify(data)}
-        </div>
-       
+        </div>  
     )
 }
 

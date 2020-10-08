@@ -1,8 +1,7 @@
-.signup-container{
-    background: url('../img/spice.jpg');
+.signin-container{
+    background: url('../img/signin.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     opacity:0.53;
 }
-
