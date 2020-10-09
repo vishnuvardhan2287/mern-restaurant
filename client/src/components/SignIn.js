@@ -6,17 +6,17 @@ import isEmail from 'validator/lib/isEmail';
 import {signIn} from '../api/auth';
 import {showErrorMsg} from '../helpers/messages';
 import {showLoading} from '../helpers/loading';
+import {setAuthentication, isAuthenticated} from '../helpers/auth';
 
 const SignIn = ()  => {
     const [data,setData] = useState({
         email:'',
         password:'',
         errorMsg:false,
-        loading:false,
-        redirectToDashboard: false
+        loading:false
     })
 
-    const {email,password,errorMsg,loading,redirectToDashboard} = data;
+    const {email,password,errorMsg,loading} = data;
 
     const handleChange = e =>{
         setData({
@@ -49,6 +49,17 @@ const SignIn = ()  => {
             })
 
             signIn(formData)
+            .then(response =>{
+                setAuthentication(response.data.token,response.data.user);
+                if(isAuthenticated() && isAuthenticated().role === 1 ){
+                    console.log('Redirecting to admin dashboard')
+                } else {
+                    console.log('Redirecting to user dashboard')
+                }
+            })
+            .catch(err =>{
+                console.log('SignIn Error: ', err)
+            })
         }
     }
 
